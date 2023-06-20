@@ -53,12 +53,20 @@
            background: var(--tg--theme-secondary-bg-color);
         }
     </style>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="main">
         <h1>Bomba Burger</h1>
         <img src="https://7themes.su/_ph/37/425911323.png?1631263861">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+        <button onclick="decrement()">-</button>
+        <input id="demoInput" type="number" min=0 max=1000>
+        <button onclick="increment()">+</button><br>
         <button id="buy">Buy</button>
     </div>
     <form id="form" style="display: none;">
@@ -85,10 +93,12 @@
         let first_name = document.getElementById("first_name").value;
         let last_name = document.getElementById("last_name").value;
         let phone_number = document.getElementById("phone_number").value;
+        let quantity = document.getElementById("demoInput").value;
         let data = {
             first_name: first_name,
             last_name: last_name,
             phone_number: phone_number,
+            quantity: quantity,
         }
         tg.sendData(JSON.stringify(data))
         tg.close()
@@ -97,5 +107,13 @@
 
     
 </script>
+<script>
+    function increment() {
+       document.getElementById('demoInput').stepUp();
+    }
+    function decrement() {
+       document.getElementById('demoInput').stepDown();
+    }
+ </script>
 </body>
 </html>
