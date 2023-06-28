@@ -310,23 +310,7 @@ var Cafe = {
         clearTimeout(Cafe.statusTo);
         $(".js-status").removeClass("shown");
     },
-    apiRequest: function (method, data, onCallback) {
-        var authData = Telegram.WebApp.initData || "";
-        $.ajax(Cafe.apiUrl, {
-            type: "POST",
-            data: $.extend(data, { _auth: authData, method: method }),
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true,
-            },
-            success: function (result) {
-                onCallback && onCallback(result);
-            },
-            error: function (xhr) {
-                onCallback && onCallback({ error: "Server error" });
-            },
-        });
-    },
+
 };
 
 /*!
